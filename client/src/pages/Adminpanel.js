@@ -38,7 +38,9 @@ const Adminpanel = () => {
 
     const fetchUserlist = async () => {
         try {
-            const result = await axios.get("http://localhost:8080/api/allusers")
+            // const result = await axios.get("http://localhost:8080/api/allusers")
+            const result = await axios.get("http://16.170.230.119:8080/api/allusers");
+
             if (result.data.success) {
                 console.log(result.data)
                 setUserlist(result.data.allusers)
@@ -49,7 +51,9 @@ const Adminpanel = () => {
     }
     const fetchTasklist = async () => {
         try {
-            const result = await axios.get("http://localhost:8080/api/gettasklist")
+            // const result = await axios.get("http://localhost:8080/api/gettasklist")
+            const result = await axios.get("http://16.170.230.119:8080/api/gettasklist");
+
             if (result.data.success) {
                 console.log(result.data)
                 setTasklist(result.data.tasks)
@@ -71,7 +75,13 @@ const Adminpanel = () => {
     const handleform = async (e) => {
         e.preventDefault();
         try {
-            const result = await axios.post("http://localhost:8080/api/createtask", { title, description, assignedTo })
+            // const result = await axios.post("http://localhost:8080/api/createtask", { title, description, assignedTo })
+            const result = await axios.post("http://16.170.230.119:8080/api/createtask", {
+              title,
+              description,
+              assignedTo,
+            });
+            
             if (result.data.success) {
                 alert("Task created successfully")
             }
@@ -84,7 +94,13 @@ const Adminpanel = () => {
     const updateUser = async (e) => {
         e.preventDefault();
         try {
-            const result = await axios.put(`http://localhost:8080/api/updateuser/${userid}`, { name, email, role })
+            // const result = await axios.put(`http://localhost:8080/api/updateuser/${userid}`, { name, email, role })
+            const result = await axios.put(`http://16.170.230.119:8080/api/updateuser/${userid}`, {
+              name,
+              email,
+              role,
+            });
+            
             if (result.data.success) {
                 alert("User updated successfully")
                 fetchUserlist(); 
@@ -97,7 +113,9 @@ const Adminpanel = () => {
       // Delete User
   const deleteUser = async (userid) => {
     try {
-      const response = await axios.delete(`http://localhost:8080/api/deleteuser/${userid}`)
+      // const response = await axios.delete(`http://localhost:8080/api/deleteuser/${userid}`)
+      const response = await axios.delete(`http://16.170.230.119:8080/api/deleteuser/${userid}`);
+
       if (response) {
         alert(response?.data?.message)
         fetchUserlist();  
@@ -109,7 +127,9 @@ const Adminpanel = () => {
       // Delete Task
   const deleteTask = async (userid) => {
     try {
-      const response = await axios.delete(`http://localhost:8080/api/deletetask/${userid}`)
+      // const response = await axios.delete(`http://localhost:8080/api/deletetask/${userid}`)
+      const response = await axios.delete(`http://16.170.230.119:8080/api/deletetask/${userid}`);
+
       if (response) {
         alert(response?.data?.message)
         fetchUserlist();  // Re-fetch the user list after successful update

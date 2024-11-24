@@ -14,7 +14,7 @@ const Register = () => {
 const handleSubmit = async (e)=>{
   e.preventDefault();
   try {
-    const result = await axios.post('http://localhost:8080/api/register', {name,email,password});
+    const result = await axios.post(`${process.env.REACT_APP_API}/register`, {name,email,password});
     console.log(result)
     if(result.data.success){
       alert('Register successfully')

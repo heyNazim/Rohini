@@ -12,7 +12,7 @@ const Login = () => {
   const handleFUnction = async (e) => {
     try {
       e.preventDefault();
-      const result = await axios.post('http://localhost:8080/api/login', { email, password });
+      const result = await axios.post(`${process.env.REACT_APP_API}/login`, { email, password });
       console.log(result.data);
       localStorage.setItem('auth', result.data.user.role)
       localStorage.setItem('userId', result.data.user._id)

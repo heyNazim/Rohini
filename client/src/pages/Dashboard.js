@@ -15,7 +15,7 @@ const Dashboard = () => {
   const gettask = async () => {
     try {
       const userid = localStorage.getItem("userId");
-      const result = await axios.get("http://localhost:8080/api/allusertasks", {
+      const result = await axios.get(`${process.env.REACT_APP_API}/allusertasks`, {
         headers: {
           userid: userid
         }
@@ -34,7 +34,7 @@ const Dashboard = () => {
    const updateTaskStatus = async (taskId, e) => {
     e.preventDefault();
     try {
-      const result = await axios.put(`http://localhost:8080/api/usertaskstatus/${taskId}`, { status });
+      const result = await axios.put(`${process.env.REACT_APP_API}/usertaskstatus/${taskId}`, { status });
       if (result.data.success) {
         alert("Task updated successfully");
         gettask();
