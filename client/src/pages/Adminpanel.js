@@ -39,7 +39,7 @@ const Adminpanel = () => {
     const fetchUserlist = async () => {
         try {
             // const result = await axios.get("http://localhost:8080/api/allusers")
-            const result = await axios.get("http://16.170.230.119:8080/api/allusers");
+            const result = await axios.get(`${process.env.REACT_APP_API}/allusers`);
 
             if (result.data.success) {
                 console.log(result.data)
@@ -52,7 +52,7 @@ const Adminpanel = () => {
     const fetchTasklist = async () => {
         try {
             // const result = await axios.get("http://localhost:8080/api/gettasklist")
-            const result = await axios.get("http://16.170.230.119:8080/api/gettasklist");
+            const result = await axios.get(`${process.env.REACT_APP_API}/gettasklist`);
 
             if (result.data.success) {
                 console.log(result.data)
@@ -76,7 +76,7 @@ const Adminpanel = () => {
         e.preventDefault();
         try {
             // const result = await axios.post("http://localhost:8080/api/createtask", { title, description, assignedTo })
-            const result = await axios.post("http://16.170.230.119:8080/api/createtask", {
+            const result = await axios.post(`${process.env.REACT_APP_API}/createtask`, {
               title,
               description,
               assignedTo,
@@ -95,7 +95,7 @@ const Adminpanel = () => {
         e.preventDefault();
         try {
             // const result = await axios.put(`http://localhost:8080/api/updateuser/${userid}`, { name, email, role })
-            const result = await axios.put(`http://16.170.230.119:8080/api/updateuser/${userid}`, {
+            const result = await axios.put(`${process.env.REACT_APP_API}/updateuser/${userid}`, {
               name,
               email,
               role,
@@ -114,7 +114,7 @@ const Adminpanel = () => {
   const deleteUser = async (userid) => {
     try {
       // const response = await axios.delete(`http://localhost:8080/api/deleteuser/${userid}`)
-      const response = await axios.delete(`http://16.170.230.119:8080/api/deleteuser/${userid}`);
+      const response = await axios.delete(`${process.env.REACT_APP_API}/deleteuser/${userid}`);
 
       if (response) {
         alert(response?.data?.message)
@@ -128,7 +128,7 @@ const Adminpanel = () => {
   const deleteTask = async (userid) => {
     try {
       // const response = await axios.delete(`http://localhost:8080/api/deletetask/${userid}`)
-      const response = await axios.delete(`http://16.170.230.119:8080/api/deletetask/${userid}`);
+      const response = await axios.delete(`${process.env.REACT_APP_API}/deletetask/${userid}`);
 
       if (response) {
         alert(response?.data?.message)
