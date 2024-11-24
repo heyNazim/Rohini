@@ -5,12 +5,16 @@
     import connectdb from './config/connectDb.js'
     import router from './routes/userRoute.js'
     import adminrouter from './routes/adminRoute.js'
+    import path from 'path'
 
     const app = express()
     dotenv.config()
     app.use(cors())
     app.use(express.json())
 
+    const _dirname = path.dirname('')
+    const buildpath = path.join(_dirname, '../client/build')
+    app.use(express.static(buildpath))
 
 
 
@@ -21,7 +25,7 @@
     app.use('/api', adminrouter);
 
 
-    const PORT = 8080
+    const PORT = process.env.PORT || 8080
     app.listen(PORT,()=>{
         console.log(`Server is running on PORT ${PORT}`.bgWhite)
     })

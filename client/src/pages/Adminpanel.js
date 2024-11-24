@@ -87,8 +87,7 @@ const Adminpanel = () => {
             const result = await axios.put(`http://localhost:8080/api/updateuser/${userid}`, { name, email, role })
             if (result.data.success) {
                 alert("User updated successfully")
-                fetchUserlist();  // Re-fetch the user list after successful update
-
+                fetchUserlist(); 
             }
         } catch (error) {
             console.log(error)
@@ -101,8 +100,7 @@ const Adminpanel = () => {
       const response = await axios.delete(`http://localhost:8080/api/deleteuser/${userid}`)
       if (response) {
         alert(response?.data?.message)
-        fetchUserlist();  // Re-fetch the user list after successful update
-
+        fetchUserlist();  
       }
     } catch (error) {
       console.log(error)
