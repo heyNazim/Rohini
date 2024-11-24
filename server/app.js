@@ -8,13 +8,14 @@
     import path from 'path'
 
     const app = express()
+    const _dirname = path.dirname('')
+    const buildpath = path.join(_dirname, '../client/build')
+    app.use(express.static(buildpath))
+    
     dotenv.config()
     app.use(cors())
     app.use(express.json())
 
-    const _dirname = path.dirname('')
-    const buildpath = path.join(_dirname, '../client/build')
-    app.use(express.static(buildpath))
 
 
 
