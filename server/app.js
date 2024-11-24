@@ -8,7 +8,9 @@ import adminrouter from './routes/adminRoute.js';
 import path from 'path';
 
 const app = express();
-const _dirname = path.dirname('');  // Corrected to get the directory of this file
+app.use(express.json());
+
+const _dirname = path.dirname("");  // Corrected to get the directory of this file
 const buildpath = path.join(_dirname, '../client/build');
 
 // Serve static files from the client build folder
@@ -23,7 +25,6 @@ app.use(cors({
 }));
 
 // Middleware for parsing JSON requests
-app.use(express.json());
 
 // Connect to the database
 connectdb();
