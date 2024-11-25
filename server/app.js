@@ -30,8 +30,8 @@ app.use(cors({
 connectdb();
 
 // Define routes
-app.use('/api/user', router);    // Updated to make it clear this is for user routes
-app.use('/api/admin', adminrouter);  // Updated to make it clear this is for admin routes
+app.use('/api', router);    // Updated to make it clear this is for user routes
+app.use('/api', adminrouter);  // Updated to make it clear this is for admin routes
 
 // Start the server
 const PORT = process.env.PORT || 8080;
